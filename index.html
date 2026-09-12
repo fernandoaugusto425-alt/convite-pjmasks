@@ -75,6 +75,37 @@
             100% { transform: scale(1); }
         }
 
+        /* ANIMAÇÃO DOS ITENS DE ANIVERSÁRIO NO FUNDO */
+        #festive-bg {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; /* Permite clicar no formulário através dos emojis */
+            z-index: 1;
+        }
+
+        .floating-item {
+            position: absolute;
+            font-size: 35px;
+            bottom: -50px;
+            animation: floatUp linear infinite;
+            opacity: 0.4; /* Deixa meio transparente para não atrapalhar a leitura */
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-110vh) rotate(360deg); }
+        }
+
+        /* Tempos e posições diferentes para cada item flutuante */
+        .item1 { left: 10%; animation-duration: 8s; animation-delay: 0s; }
+        .item2 { left: 80%; animation-duration: 12s; animation-delay: 2s; }
+        .item3 { left: 30%; animation-duration: 10s; animation-delay: 4s; }
+        .item4 { left: 70%; animation-duration: 9s; animation-delay: 1s; font-size: 45px; }
+        .item5 { left: 50%; animation-duration: 11s; animation-delay: 3s; }
+        .item6 { left: 20%; animation-duration: 13s; animation-delay: 5s; }
+        .item7 { left: 85%; animation-duration: 14s; animation-delay: 0.5s; }
+
         /* CONTEÚDO DO CONVITE (TELA 2) */
         #invitation-content {
             display: none;
@@ -82,47 +113,26 @@
             max-width: 600px;
             margin: 0 auto;
             text-align: center;
-            position: relative; 
-        }
-
-        /* Heróis Flutuantes Corrigidos para Celular */
-        .hero-img {
-            position: absolute;
-            z-index: 2;
-            opacity: 0.95;
-            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
-        }
-
-        /* Posições seguras dentro da tela do celular */
-        .hero-cat { top: 90px; left: 5px; width: 85px; transform: rotate(-10deg); }
-        .hero-owl { top: 380px; right: 5px; width: 100px; transform: rotate(10deg); }
-        .hero-lizard { bottom: 130px; left: 5px; width: 85px; transform: rotate(-5deg); }
-
-        /* Ajuste para telas maiores (computador/tablet) */
-        @media (min-width: 600px) {
-            .hero-cat { left: -20px; width: 120px; }
-            .hero-owl { right: -30px; width: 140px; }
-            .hero-lizard { left: -10px; width: 110px; }
+            position: relative;
+            z-index: 5;
         }
 
         h1 {
             font-family: 'Bangers', cursive;
-            font-size: 40px;
+            font-size: 42px;
             text-shadow: 2px 2px 4px #000;
             letter-spacing: 2px;
-            margin-top: 50px;
+            margin-top: 40px;
             color: #00e5ff;
         }
 
         .info-box {
             background: rgba(11, 26, 48, 0.95);
-            border: 2px solid #0072ce;
+            border: 3px dashed #00e5ff; /* Borda tracejada de convite */
             border-radius: 15px;
             padding: 20px;
             margin: 30px 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            position: relative;
-            z-index: 5; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
         }
 
         .btn-maps {
@@ -140,11 +150,12 @@
 
         .btn-maps:hover { background-color: #005b9f; }
 
-        form { display: flex; flex-direction: column; gap: 15px; text-align: left; }
+        form { display: flex; flex-direction: column; gap: 15px; text-align: left; margin-top: 15px; }
         label { font-weight: bold; color: #00e5ff; }
         input, textarea {
-            width: 100%; padding: 10px; border-radius: 8px; border: none;
+            width: 100%; padding: 12px; border-radius: 8px; border: none;
             box-sizing: border-box; font-family: 'Nunito', sans-serif;
+            background-color: rgba(255, 255, 255, 0.95);
         }
         .guests-row { display: flex; gap: 10px; }
         .guests-row div { flex: 1; }
@@ -152,16 +163,17 @@
         button[type="submit"] {
             background-color: #009944;
             color: white;
-            border: none;
+            border: 2px solid #fff;
             padding: 15px;
-            font-size: 20px;
+            font-size: 22px;
             font-family: 'Bangers', cursive;
             border-radius: 10px;
             cursor: pointer;
             margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
-        button[type="submit"]:hover { background-color: #007a36; }
+        button[type="submit"]:hover { background-color: #007a36; transform: scale(1.02); }
     </style>
 </head>
 <body>
@@ -176,32 +188,38 @@
 
     <!-- TELA 1: CAPA COMO FUNDO -->
     <div id="welcome-screen">
-        <button id="open-btn">Abrir Convite</button>
+        <button id="open-btn">Abrir Convite 🎉</button>
+    </div>
+
+    <!-- FUNDO FESTIVO ANIMADO (Só aparece na Tela 2) -->
+    <div id="festive-bg">
+        <div class="floating-item item1">🎈</div>
+        <div class="floating-item item2">🎉</div>
+        <div class="floating-item item3">🎁</div>
+        <div class="floating-item item4">🎂</div>
+        <div class="floating-item item5">🎈</div>
+        <div class="floating-item item6">🎊</div>
+        <div class="floating-item item7">🎁</div>
     </div>
 
     <!-- TELA 2: INFORMAÇÕES DA FESTA -->
     <div id="invitation-content">
         
-        <!-- Heróis espalhados pelas laterais (verifique se estão no GitHub com esses exatos nomes) -->
-        <img src="meninogato.png" class="hero-img hero-cat" alt="Menino Gato">
-        <img src="Corujita.png" class="hero-img hero-owl" alt="Corujita">
-        <img src="Lagartixo.png" class="hero-img hero-lizard" alt="Lagartixo">
-
         <!-- Título com os balões -->
         <h1>🎈 AGNES FAZ 5 ANOS! 🎈</h1>
         
         <div class="info-box">
-            <p><strong>Data:</strong> 26 de Setembro de 2026</p>
-            <p><strong>Horário:</strong> 15:00 às 19:00 hrs</p>
-            <p><strong>Local:</strong> Anna Festas Buffet<br>Av. Joaquim Fogaça de Almeida Neto, 541 - Jardim Fogaça<br>Itapetininga - SP</p>
+            <p><strong>📅 Data:</strong> 26 de Setembro de 2026</p>
+            <p><strong>⏰ Horário:</strong> 15:00 às 19:00 hrs</p>
+            <p><strong>🥳 Local:</strong> Anna Festas Buffet<br>Av. Joaquim Fogaça de Almeida Neto, 541 - Jardim Fogaça<br>Itapetininga - SP</p>
             
             <a href="https://www.google.com/maps/search/?api=1&query=Anna+Festas+Buffet,+Av.+Joaquim+Fogaça+de+Almeida+Neto,+541,+Itapetininga" target="_blank" class="btn-maps">📍 Como Chegar (Ver Rota)</a>
         </div>
 
         <div class="info-box">
-            <h2 style="font-family: 'Bangers', cursive; margin-top: 0; text-align: center;">Confirme sua presença</h2>
+            <h2 style="font-family: 'Bangers', cursive; margin-top: 0; text-align: center;">🎉 Confirme sua presença 🎉</h2>
             
-            <!-- COLOQUE SEU CÓDIGO DO FORMSPREE AQUI -->
+            <!-- COLOQUE SEU CÓDIGO DO FORMSPREE AQUI NA HORA DE ENVIAR PARA OS CONVIDADOS -->
             <form action="https://formspree.io/f/SEU_CODIGO_AQUI" method="POST">
                 
                 <label for="nome">Seu Nome / Família:</label>
@@ -221,7 +239,7 @@
                 <label for="obs">Restrição alimentar ou observação?</label>
                 <textarea id="obs" name="Observações" rows="3" placeholder="Ex: Alergia a amendoim, vegano, etc..."></textarea>
 
-                <button type="submit">Enviar Confirmação</button>
+                <button type="submit">Enviar Confirmação 🚀</button>
             </form>
         </div>
     </div>
@@ -250,6 +268,7 @@
         document.getElementById('open-btn').addEventListener('click', function() {
             document.getElementById('welcome-screen').style.display = 'none';
             document.getElementById('invitation-content').style.display = 'block';
+            document.getElementById('festive-bg').style.display = 'block'; // Liga a animação de festa
             
             // Se a música ainda não estiver tocando, liga ela
             if (!isPlaying) {
