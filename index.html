@@ -20,21 +20,38 @@
             overflow-x: hidden;
         }
 
-        /* TELA INICIAL COM A CAPA (NOVA CONFIGURAÇÃO) */
+        /* Botão flutuante de Música */
+        #audio-control {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: 2px solid #00e5ff;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            transition: 0.3s;
+        }
+
+        /* TELA INICIAL COM A CAPA */
         #welcome-screen {
             display: flex;
             flex-direction: column;
-            justify-content: flex-end; /* Posiciona o botão mais para baixo */
+            justify-content: flex-end;
             align-items: center;
             height: 100vh;
             text-align: center;
             z-index: 10;
-            /* A capa agora é o fundo da tela inicial */
             background-image: url('capa.png.png'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            padding-bottom: 50px;
+            padding-bottom: 60px;
             box-sizing: border-box;
         }
 
@@ -47,7 +64,7 @@
             font-family: 'Bangers', cursive;
             border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.9);
             transition: transform 0.2s;
             animation: pulse 1.5s infinite;
         }
@@ -65,27 +82,35 @@
             max-width: 600px;
             margin: 0 auto;
             text-align: center;
-            position: relative; /* Importante para os heróis flutuantes */
+            position: relative; 
         }
 
-        /* Heróis Flutuantes */
+        /* Heróis Flutuantes Corrigidos para Celular */
         .hero-img {
             position: absolute;
-            width: 120px;
-            z-index: -1;
-            opacity: 0.8;
+            z-index: 2;
+            opacity: 0.95;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
         }
 
-        .hero-cat { top: 50px; left: -40px; transform: rotate(-15deg); }
-        .hero-owl { top: 300px; right: -50px; transform: rotate(10deg); width: 140px; }
-        .hero-lizard { bottom: 50px; left: -30px; transform: rotate(-5deg); width: 110px; }
+        /* Posições seguras dentro da tela do celular */
+        .hero-cat { top: 90px; left: 5px; width: 85px; transform: rotate(-10deg); }
+        .hero-owl { top: 380px; right: 5px; width: 100px; transform: rotate(10deg); }
+        .hero-lizard { bottom: 130px; left: 5px; width: 85px; transform: rotate(-5deg); }
+
+        /* Ajuste para telas maiores (computador/tablet) */
+        @media (min-width: 600px) {
+            .hero-cat { left: -20px; width: 120px; }
+            .hero-owl { right: -30px; width: 140px; }
+            .hero-lizard { left: -10px; width: 110px; }
+        }
 
         h1 {
             font-family: 'Bangers', cursive;
-            font-size: 45px;
+            font-size: 40px;
             text-shadow: 2px 2px 4px #000;
             letter-spacing: 2px;
-            margin-top: 30px;
+            margin-top: 50px;
             color: #00e5ff;
         }
 
@@ -97,7 +122,7 @@
             margin: 30px 0;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
             position: relative;
-            z-index: 5; /* Mantém a caixa acima dos heróis */
+            z-index: 5; 
         }
 
         .btn-maps {
@@ -115,24 +140,12 @@
 
         .btn-maps:hover { background-color: #005b9f; }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            text-align: left;
-        }
-
+        form { display: flex; flex-direction: column; gap: 15px; text-align: left; }
         label { font-weight: bold; color: #00e5ff; }
-
         input, textarea {
-            width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            border: none;
-            box-sizing: border-box;
-            font-family: 'Nunito', sans-serif;
+            width: 100%; padding: 10px; border-radius: 8px; border: none;
+            box-sizing: border-box; font-family: 'Nunito', sans-serif;
         }
-
         .guests-row { display: flex; gap: 10px; }
         .guests-row div { flex: 1; }
 
@@ -149,21 +162,19 @@
         }
 
         button[type="submit"]:hover { background-color: #007a36; }
-
-        /* Ajustes para telas muito pequenas de celular */
-        @media (max-width: 400px) {
-            .hero-img { width: 90px; }
-            .hero-owl { width: 100px; }
-        }
     </style>
 </head>
 <body>
 
+    <!-- Arquivo de áudio -->
     <audio id="bg-music" loop>
         <source src="musica.mp3.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- TELA 1: CAPA COMO FUNDO COM BOTÃO -->
+    <!-- Botão flutuante para controle da música -->
+    <button id="audio-control">🔈 Ligar Música</button>
+
+    <!-- TELA 1: CAPA COMO FUNDO -->
     <div id="welcome-screen">
         <button id="open-btn">Abrir Convite</button>
     </div>
@@ -171,16 +182,15 @@
     <!-- TELA 2: INFORMAÇÕES DA FESTA -->
     <div id="invitation-content">
         
-        <!-- Heróis espalhados pelas laterais -->
-        <!-- Certifique-se de que os nomes dos arquivos estão idênticos aos do GitHub -->
+        <!-- Heróis espalhados pelas laterais (verifique se estão no GitHub com esses exatos nomes) -->
         <img src="meninogato.png" class="hero-img hero-cat" alt="Menino Gato">
         <img src="Corujita.png" class="hero-img hero-owl" alt="Corujita">
         <img src="Lagartixo.png" class="hero-img hero-lizard" alt="Lagartixo">
 
-        <h1>AGNES FAZ 5 ANOS!</h1>
+        <!-- Título com os balões -->
+        <h1>🎈 AGNES FAZ 5 ANOS! 🎈</h1>
         
         <div class="info-box">
-            <!-- Data atualizada -->
             <p><strong>Data:</strong> 26 de Setembro de 2026</p>
             <p><strong>Horário:</strong> 15:00 às 19:00 hrs</p>
             <p><strong>Local:</strong> Anna Festas Buffet<br>Av. Joaquim Fogaça de Almeida Neto, 541 - Jardim Fogaça<br>Itapetininga - SP</p>
@@ -217,11 +227,35 @@
     </div>
 
     <script>
+        const audio = document.getElementById('bg-music');
+        const audioBtn = document.getElementById('audio-control');
+        let isPlaying = false;
+
+        // Função para ligar/desligar a música
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+                audioBtn.innerHTML = "🔈 Ligar Música";
+            } else {
+                audio.play();
+                audioBtn.innerHTML = "🔊 Desligar Música";
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Clicar no botão superior liga/desliga a música
+        audioBtn.addEventListener('click', toggleAudio);
+
+        // Clicar em "Abrir Convite"
         document.getElementById('open-btn').addEventListener('click', function() {
             document.getElementById('welcome-screen').style.display = 'none';
             document.getElementById('invitation-content').style.display = 'block';
-            document.getElementById('bg-music').play();
-            // Volta a página para o topo ao abrir o convite
+            
+            // Se a música ainda não estiver tocando, liga ela
+            if (!isPlaying) {
+                toggleAudio();
+            }
+            
             window.scrollTo(0, 0); 
         });
     </script>
