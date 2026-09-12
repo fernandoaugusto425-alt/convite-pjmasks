@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- As tags abaixo deixam o link bonito quando compartilhado no WhatsApp -->
+    <meta property="og:title" content="Convite Especial: Aniversário da minha Super-heroína!">
+    <meta property="og:description" content="Clique para abrir o convite e confirmar sua presença!">
+    <title>Convite PJ Masks</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;700&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Nunito', sans-serif;
+            background-color: #0b1a30;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Imagem de Fundo do PJ Masks */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Substitua este link por uma imagem da sua escolha depois */
+            background-image: url('https://i.pinimg.com/originals/db/bb/a2/dbbba208d9ee8861bbcdb4bfb5b03f0b.jpg'); 
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        /* Tela Inicial para liberar o áudio */
+        #welcome-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            z-index: 10;
+        }
+
+        #open-btn {
+            background: linear-gradient(45deg, #e3001b, #0072ce, #009944); /* Cores Menino Gato, Corujita, Lagartixo */
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 24px;
+            font-family: 'Bangers', cursive;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: transform 0.2s;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Conteúdo Principal do Convite */
+        #invitation-content {
+            display: none;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Bangers', cursive;
+            font-size: 40px;
+            text-shadow: 2px 2px 4px #000;
+            letter-spacing: 2px;
+            margin-top: 30px;
+        }
+
+        .info-box {
+            background: rgba(11, 26, 48, 0.85);
+            border: 2px solid #0072ce;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        /* Formulário de RSVP */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            color: #00e5ff;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .guests-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .guests-row div {
+            flex: 1;
+        }
+
+        button[type="submit"] {
+            background-color: #009944; /* Verde do Lagartixo */
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 20px;
+            font-family: 'Bangers', cursive;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #007a36;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div>
+
+    <!-- Áudio do PJ Masks -->
+    <!-- Colocamos um link de áudio provisório, podemos trocar depois por um arquivo MP3 local -->
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/architectureplay/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Tela Inicial -->
+    <div id="welcome-screen">
+        <h1 style="color: white; text-shadow: 2px 2px 5px black;">É hora de ser um herói!</h1>
+        <button id="open-btn">Abrir Convite</button>
+    </div>
+
+    <!-- Conteúdo do Convite -->
+    <div id="invitation-content">
+        <h1>NOME DA FILHA faz X anos!</h1>
+        
+        <div class="info-box">
+            <p><strong>Data:</strong> 00 de Mês de 2026</p>
+            <p><strong>Horário:</strong> 15:00 hrs</p>
+            <p><strong>Local:</strong> Quartel General dos PJ Masks<br>Rua Fictícia, 123 - Bairro</p>
+        </div>
+
+        <div class="info-box">
+            <h2 style="font-family: 'Bangers', cursive; margin-top: 0;">Confirme sua presença</h2>
+            
+            <!-- Substituiremos este link pelo seu Formspree -->
+            <form action="https://formspree.io/f/SEU_CODIGO_AQUI" method="POST">
+                
+                <label for="nome">Seu Nome / Família:</label>
+                <input type="text" id="nome" name="Nome" required placeholder="Ex: Família Silva">
+
+                <div class="guests-row">
+                    <div>
+                        <label for="adultos">Qtd Adultos:</label>
+                        <input type="number" id="adultos" name="Adultos" min="1" required value="1">
+                    </div>
+                    <div>
+                        <label for="criancas">Qtd Crianças:</label>
+                        <input type="number" id="criancas" name="Crianças" min="0" required value="0">
+                    </div>
+                </div>
+
+                <label for="obs">Restrição alimentar ou observação?</label>
+                <textarea id="obs" name="Observações" rows="3" placeholder="Ex: Alergia a amendoim, vegano, etc..."></textarea>
+
+                <button type="submit">Enviar Confirmação</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('open-btn').addEventListener('click', function() {
+            // Esconde a tela inicial
+            document.getElementById('welcome-screen').style.display = 'none';
+            // Mostra o convite
+            document.getElementById('invitation-content').style.display = 'block';
+            // Toca a música
+            document.getElementById('bg-music').play();
+        });
+    </script>
+
+</body>
+</html>
