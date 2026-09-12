@@ -133,13 +133,17 @@
             cursor: pointer;
             margin-top: 10px;
         }
+
+        button[type="submit"]:hover {
+            background-color: #007a36;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Link direto para o arquivo de áudio que você subiu -->
+    <!-- Link corrigido para a música com a extensão dupla que subiu no GitHub -->
     <audio id="bg-music" loop>
-        <source src="musica.mp3" type="audio/mpeg">
+        <source src="musica.mp3.mp3" type="audio/mpeg">
     </audio>
 
     <div id="welcome-screen">
@@ -149,20 +153,22 @@
 
     <div id="invitation-content">
         
-        <!-- Link direto para a imagem que você subiu -->
-        <img src="capa.png" alt="Aniversário da Agnes" class="convite-img">
+        <!-- Link corrigido para a imagem com a extensão dupla que subiu no GitHub -->
+        <img src="capa.png.png" alt="Aniversário da Agnes" class="convite-img">
         
         <div class="info-box">
             <p><strong>Data:</strong> 26 de Novembro de 2026</p>
             <p><strong>Horário:</strong> 15:00 às 19:00 hrs</p>
             <p><strong>Local:</strong> Anna Festas Buffet<br>Av. Joaquim Fogaça de Almeida Neto, 541 - Jardim Fogaça<br>Itapetininga - SP</p>
             
-            <a href="COLE_O_LINK_DO_MAPA_AQUI" target="_blank" class="btn-maps">📍 Como Chegar (Ver Rota)</a>
+            <!-- Link do Google Maps já configurado e pronto -->
+            <a href="https://www.google.com/maps/search/?api=1&query=Anna+Festas+Buffet,+Av.+Joaquim+Fogaça+de+Almeida+Neto,+541,+Itapetininga" target="_blank" class="btn-maps">📍 Como Chegar (Ver Rota)</a>
         </div>
 
         <div class="info-box">
             <h2 style="font-family: 'Bangers', cursive; margin-top: 0; text-align: center;">Confirme sua presença</h2>
             
+            <!-- ATENÇÃO: Lembre-se de colar o seu código do Formspree aqui no lugar de "SEU_CODIGO_AQUI" depois -->
             <form action="https://formspree.io/f/SEU_CODIGO_AQUI" method="POST">
                 
                 <label for="nome">Seu Nome / Família:</label>
