@@ -112,7 +112,6 @@
         }
         button[type="submit"]:hover { background-color: #007a36; transform: scale(1.02); }
 
-        /* Mensagem de Sucesso Bonita */
         #success-message {
             display: none;
             background: rgba(11, 26, 48, 0.98);
@@ -173,8 +172,10 @@
         <div class="info-box">
             <h2 style="font-family: 'Bangers', cursive; margin-top: 0; text-align: center;">🎉 Confirme sua presença 🎉</h2>
             
-            <!-- FORMULÁRIO COM O SCRIPT DO GOOGLE -->
-            <form id="rsvp-form" action="https://script.google.com/macros/s/AKfycbxHt-L7OArwSP7milY1_VtpbRl2vwQ6c2Ikr9S2gBspiGX9XIFqdGFhObxuWE0SBviA/exec" method="POST">
+            <iframe name="hidden-iframe" id="hidden-iframe" style="display:none;"></iframe>
+
+            <!-- Formulário atualizado com o seu novo link do Apps Script -->
+            <form id="rsvp-form" action="https://script.google.com/macros/s/AKfycbya0khQtQlyedrnJZ2ZeGlEtLGI9icab_Aym8aVH8e71wK12Y6JNZKHwWQz-81zgZpedg/exec" method="POST" target="hidden-iframe">
                 
                 <label for="nome">Seu Nome (Convidado Principal):</label>
                 <input type="text" id="nome" name="Nome_Principal" required placeholder="Ex: João da Silva">
@@ -198,7 +199,6 @@
                 <button type="submit" id="submit-btn">Enviar Confirmação 🚀</button>
             </form>
 
-            <!-- MENSAGEM QUE APARECE APÓS O ENVIO -->
             <div id="success-message">
                 <h2>🎉 Presença Confirmada! 🎉</h2>
                 <p>Muito obrigado! Sua confirmação foi enviada com sucesso para a festinha da Agnes. Estamos ansiosos para celebrar com vocês! 🎂🎈</p>
@@ -264,33 +264,19 @@
         inputAdultos.addEventListener('input', atualizarCamposNomes);
         inputCriancas.addEventListener('input', atualizarCamposNomes);
 
-        // Intercepta o envio do formulário para mostrar a mensagem bonita sem atualizar a página
         const form = document.getElementById('rsvp-form');
         const submitBtn = document.getElementById('submit-btn');
         const successMessage = document.getElementById('success-message');
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Impede o redirecionamento padrão do navegador
-            
+        form.addEventListener('submit', function() {
             submitBtn.innerHTML = "Enviando...";
             submitBtn.disabled = true;
 
-            const formData = new FormData(form);
-
-            fetch(form.action, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                form.style.display = 'none'; // Esconde o formulário
-                successMessage.style.display = 'block'; // Mostra a mensagem de obrigado
-                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); // Rola até a mensagem
-            })
-            .catch(error => {
-                alert('Ocorreu um erro ao enviar. Tente novamente!');
-                submitBtn.innerHTML = "Enviar Confirmação 🚀";
-                submitBtn.disabled = false;
-            });
+            setTimeout(function() {
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            }, 600);
         });
     </script>
 
