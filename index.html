@@ -10,94 +10,50 @@
         @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;700&display=swap');
 
         body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
+            margin: 0; padding: 0; width: 100%; height: 100%;
             font-family: 'Nunito', sans-serif;
-            background-color: #051429;
-            color: #fff;
-            overflow-x: hidden;
+            background-color: #051429; color: #fff; overflow-x: hidden;
         }
 
-        /* Botão flutuante de Música */
         #audio-control {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            border: 2px solid #00e5ff;
-            border-radius: 20px;
-            padding: 8px 15px;
-            font-family: 'Nunito', sans-serif;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            transition: 0.3s;
+            position: fixed; top: 15px; right: 15px; z-index: 1000;
+            background: rgba(0, 0, 0, 0.7); color: white;
+            border: 2px solid #00e5ff; border-radius: 20px;
+            padding: 8px 15px; font-family: 'Nunito', sans-serif;
+            font-weight: bold; cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5); transition: 0.3s;
         }
 
-        /* TELA INICIAL COM A CAPA */
         #welcome-screen {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            z-index: 10;
-            background-image: url('capa.png.png'); 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            padding-bottom: 60px;
-            box-sizing: border-box;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            align-items: center; height: 100vh; text-align: center; z-index: 10;
+            background-image: url('capa.png.png'); background-size: cover;
+            background-position: center; background-repeat: no-repeat;
+            padding-bottom: 60px; box-sizing: border-box;
         }
 
         #open-btn {
             background: linear-gradient(45deg, #e3001b, #0072ce, #009944);
-            border: 2px solid white;
-            color: white;
-            padding: 15px 40px;
-            font-size: 28px;
-            font-family: 'Bangers', cursive;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.9);
-            transition: transform 0.2s;
+            border: 2px solid white; color: white; padding: 15px 40px;
+            font-size: 28px; font-family: 'Bangers', cursive; border-radius: 30px;
+            cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.9);
             animation: pulse 1.5s infinite;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-        /* ANIMAÇÃO DOS ITENS DE ANIVERSÁRIO NO FUNDO */
         #festive-bg {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            pointer-events: none; /* Permite clicar no formulário através dos emojis */
-            z-index: 1;
+            display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 1;
         }
 
         .floating-item {
-            position: absolute;
-            font-size: 35px;
-            bottom: -50px;
-            animation: floatUp linear infinite;
-            opacity: 0.4; /* Deixa meio transparente para não atrapalhar a leitura */
+            position: absolute; font-size: 35px; bottom: -50px;
+            animation: floatUp linear infinite; opacity: 0.4;
         }
 
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-110vh) rotate(360deg); }
-        }
+        @keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); } 100% { transform: translateY(-110vh) rotate(360deg); } }
 
-        /* Tempos e posições diferentes para cada item flutuante */
         .item1 { left: 10%; animation-duration: 8s; animation-delay: 0s; }
         .item2 { left: 80%; animation-duration: 12s; animation-delay: 2s; }
         .item3 { left: 30%; animation-duration: 10s; animation-delay: 4s; }
@@ -106,92 +62,73 @@
         .item6 { left: 20%; animation-duration: 13s; animation-delay: 5s; }
         .item7 { left: 85%; animation-duration: 14s; animation-delay: 0.5s; }
 
-        /* CONTEÚDO DO CONVITE (TELA 2) */
         #invitation-content {
-            display: none;
-            padding: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 5;
+            display: none; padding: 20px; max-width: 600px; margin: 0 auto;
+            text-align: center; position: relative; z-index: 5;
         }
 
         h1 {
-            font-family: 'Bangers', cursive;
-            font-size: 42px;
-            text-shadow: 2px 2px 4px #000;
-            letter-spacing: 2px;
-            margin-top: 40px;
-            color: #00e5ff;
+            font-family: 'Bangers', cursive; font-size: 42px;
+            text-shadow: 2px 2px 4px #000; letter-spacing: 2px;
+            margin-top: 40px; color: #00e5ff;
         }
 
         .info-box {
-            background: rgba(11, 26, 48, 0.95);
-            border: 3px dashed #00e5ff; /* Borda tracejada de convite */
-            border-radius: 15px;
-            padding: 20px;
-            margin: 30px 0;
+            background: rgba(11, 26, 48, 0.95); border: 3px dashed #00e5ff;
+            border-radius: 15px; padding: 20px; margin: 30px 0;
             box-shadow: 0 4px 15px rgba(0,0,0,0.6);
         }
 
         .btn-maps {
-            display: inline-block;
-            background-color: #0072ce;
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-family: 'Nunito', sans-serif;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: background-color 0.3s;
+            display: inline-block; background-color: #0072ce; color: white;
+            text-decoration: none; padding: 10px 20px; border-radius: 8px;
+            font-family: 'Nunito', sans-serif; font-weight: bold; margin-top: 15px;
         }
-
-        .btn-maps:hover { background-color: #005b9f; }
 
         form { display: flex; flex-direction: column; gap: 15px; text-align: left; margin-top: 15px; }
-        label { font-weight: bold; color: #00e5ff; }
+        label { font-weight: bold; color: #00e5ff; font-size: 15px; }
         input, textarea {
             width: 100%; padding: 12px; border-radius: 8px; border: none;
-            box-sizing: border-box; font-family: 'Nunito', sans-serif;
-            background-color: rgba(255, 255, 255, 0.95);
+            box-sizing: border-box; font-family: 'Nunito', sans-serif; background-color: rgba(255, 255, 255, 0.95);
         }
+        
         .guests-row { display: flex; gap: 10px; }
         .guests-row div { flex: 1; }
 
+        /* Estilo para os campos de nome adicionais gerados automaticamente */
+        #nomes-extras {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .extra-field {
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
         button[type="submit"] {
-            background-color: #009944;
-            color: white;
-            border: 2px solid #fff;
-            padding: 15px;
-            font-size: 22px;
-            font-family: 'Bangers', cursive;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 10px;
+            background-color: #009944; color: white; border: 2px solid #fff;
+            padding: 15px; font-size: 22px; font-family: 'Bangers', cursive;
+            border-radius: 10px; cursor: pointer; margin-top: 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
-
         button[type="submit"]:hover { background-color: #007a36; transform: scale(1.02); }
     </style>
 </head>
 <body>
 
-    <!-- Arquivo de áudio -->
     <audio id="bg-music" loop>
         <source src="musica.mp3.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Botão flutuante para controle da música -->
     <button id="audio-control">🔈 Ligar Música</button>
 
-    <!-- TELA 1: CAPA COMO FUNDO -->
     <div id="welcome-screen">
         <button id="open-btn">Abrir Convite 🎉</button>
     </div>
 
-    <!-- FUNDO FESTIVO ANIMADO (Só aparece na Tela 2) -->
     <div id="festive-bg">
         <div class="floating-item item1">🎈</div>
         <div class="floating-item item2">🎉</div>
@@ -202,42 +139,42 @@
         <div class="floating-item item7">🎁</div>
     </div>
 
-    <!-- TELA 2: INFORMAÇÕES DA FESTA -->
     <div id="invitation-content">
-        
-        <!-- Título com os balões -->
         <h1>🎈 AGNES FAZ 5 ANOS! 🎈</h1>
         
         <div class="info-box">
             <p><strong>📅 Data:</strong> 26 de Setembro de 2026</p>
             <p><strong>⏰ Horário:</strong> 15:00 às 19:00 hrs</p>
             <p><strong>🥳 Local:</strong> Anna Festas Buffet<br>Av. Joaquim Fogaça de Almeida Neto, 541 - Jardim Fogaça<br>Itapetininga - SP</p>
-            
             <a href="https://www.google.com/maps/search/?api=1&query=Anna+Festas+Buffet,+Av.+Joaquim+Fogaça+de+Almeida+Neto,+541,+Itapetininga" target="_blank" class="btn-maps">📍 Como Chegar (Ver Rota)</a>
         </div>
 
         <div class="info-box">
             <h2 style="font-family: 'Bangers', cursive; margin-top: 0; text-align: center;">🎉 Confirme sua presença 🎉</h2>
             
-            <!-- COLOQUE SEU CÓDIGO DO FORMSPREE AQUI NA HORA DE ENVIAR PARA OS CONVIDADOS -->
-            <form action="https://formspree.io/f/SEU_CODIGO_AQUI" method="POST">
+            <!-- COLE O LINK DO SHEETMONKEY AQUI -->
+            <form action="COLE_O_LINK_DO_SHEETMONKEY_AQUI" method="POST">
                 
-                <label for="nome">Seu Nome / Família:</label>
-                <input type="text" id="nome" name="Nome" required placeholder="Ex: Família Silva">
+                <label for="nome">Seu Nome (Convidado Principal):</label>
+                <input type="text" id="nome" name="Nome_Principal" required placeholder="Ex: João da Silva">
 
                 <div class="guests-row">
                     <div>
-                        <label for="adultos">Qtd Adultos:</label>
-                        <input type="number" id="adultos" name="Adultos" min="1" required value="1">
+                        <!-- Alterado o mínimo para 1, pois o convidado principal já conta como 1 adulto -->
+                        <label for="adultos">Adultos (Total):</label>
+                        <input type="number" id="adultos" name="Qtd_Adultos" min="1" required value="1">
                     </div>
                     <div>
-                        <label for="criancas">Qtd Crianças:</label>
-                        <input type="number" id="criancas" name="Crianças" min="0" required value="0">
+                        <label for="criancas">Crianças (Total):</label>
+                        <input type="number" id="criancas" name="Qtd_Criancas" min="0" required value="0">
                     </div>
                 </div>
 
+                <!-- Div onde os campos de nomes vão aparecer magicamente -->
+                <div id="nomes-extras"></div>
+
                 <label for="obs">Restrição alimentar ou observação?</label>
-                <textarea id="obs" name="Observações" rows="3" placeholder="Ex: Alergia a amendoim, vegano, etc..."></textarea>
+                <textarea id="obs" name="Observações" rows="2" placeholder="Ex: Alergia a amendoim, etc..."></textarea>
 
                 <button type="submit">Enviar Confirmação 🚀</button>
             </form>
@@ -245,11 +182,11 @@
     </div>
 
     <script>
+        // CONTROLE DA MÚSICA
         const audio = document.getElementById('bg-music');
         const audioBtn = document.getElementById('audio-control');
         let isPlaying = false;
 
-        // Função para ligar/desligar a música
         function toggleAudio() {
             if (isPlaying) {
                 audio.pause();
@@ -261,22 +198,51 @@
             isPlaying = !isPlaying;
         }
 
-        // Clicar no botão superior liga/desliga a música
         audioBtn.addEventListener('click', toggleAudio);
 
-        // Clicar em "Abrir Convite"
         document.getElementById('open-btn').addEventListener('click', function() {
             document.getElementById('welcome-screen').style.display = 'none';
             document.getElementById('invitation-content').style.display = 'block';
-            document.getElementById('festive-bg').style.display = 'block'; // Liga a animação de festa
-            
-            // Se a música ainda não estiver tocando, liga ela
-            if (!isPlaying) {
-                toggleAudio();
-            }
-            
+            document.getElementById('festive-bg').style.display = 'block'; 
+            if (!isPlaying) toggleAudio();
             window.scrollTo(0, 0); 
         });
+
+        // LÓGICA DO FORMULÁRIO DINÂMICO DE NOMES
+        const inputAdultos = document.getElementById('adultos');
+        const inputCriancas = document.getElementById('criancas');
+        const containerNomes = document.getElementById('nomes-extras');
+
+        function atualizarCamposNomes() {
+            containerNomes.innerHTML = ''; // Limpa os campos antes de recriar
+
+            let qtdAdultos = parseInt(inputAdultos.value) || 1;
+            let qtdCriancas = parseInt(inputCriancas.value) || 0;
+
+            // Gera campos para acompanhantes adultos (se tiver mais de 1)
+            for (let i = 2; i <= qtdAdultos; i++) {
+                containerNomes.innerHTML += `
+                    <div class="extra-field">
+                        <label>Nome do Acompanhante Adulto ${i - 1}:</label>
+                        <input type="text" name="Nome_Acompanhante_${i - 1}" required placeholder="Ex: Maria Souza">
+                    </div>
+                `;
+            }
+
+            // Gera campos para crianças
+            for (let i = 1; i <= qtdCriancas; i++) {
+                containerNomes.innerHTML += `
+                    <div class="extra-field">
+                        <label>Nome da Criança ${i}:</label>
+                        <input type="text" name="Nome_Crianca_${i}" required placeholder="Ex: Pedrinho (Idade)">
+                    </div>
+                `;
+            }
+        }
+
+        // Executa a função toda vez que os números são alterados
+        inputAdultos.addEventListener('input', atualizarCamposNomes);
+        inputCriancas.addEventListener('input', atualizarCamposNomes);
     </script>
 
 </body>
